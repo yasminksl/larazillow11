@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'sqlite'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -48,8 +48,8 @@ return [
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => env('DB_CHARSET', 'utf8mb4'),
-            'collation' => env('DB_COLLATION', 'utf8mb4_0900_ai_ci'),
+            'charset' => env('DB_CHARSET', 'utf8'),
+            'collation' => env('DB_COLLATION', 'utf8_general_ci'),
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,
@@ -68,8 +68,8 @@ return [
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => env('DB_CHARSET', 'utf8mb4'),
-            'collation' => env('DB_COLLATION', 'utf8mb4_uca1400_ai_ci'),
+            'charset' => env('DB_CHARSET', 'utf8'),
+            'collation' => env('DB_COLLATION', 'utf8_general_ci'),
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,
