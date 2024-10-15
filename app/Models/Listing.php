@@ -11,7 +11,7 @@ class Listing extends Model
 
     protected $fillable = [
         'beds',
-        'bath',
+        'baths',
         'area',
         'city',
         'code',
