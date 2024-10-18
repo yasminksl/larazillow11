@@ -31,7 +31,7 @@ import Price from '@/Components/Price.vue';
 import { useMonthlyPayment } from '@/Composables/useMonthlyPayment'
 
 const props = defineProps({
-    listing: Array,
+    listing: Object,
 })
 
 const { monthlyPayment } = useMonthlyPayment(props.listing.price, 2.5, 25)

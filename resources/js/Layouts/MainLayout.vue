@@ -12,7 +12,9 @@
                     <div class="text-sm text-gray-500">{{ user.name }}</div>
                     <Link :href="route('listing.create')" class="btn-primary">+ New Listing
                     </Link>
-                    <div>Logout</div>
+                    <div>
+                        <Link method="delete" as="button" :href="route('logout')">Logout</Link>
+                    </div>
                 </div>
                 <div v-else>
                     <Link :href="route('login')">Sign-In</Link>
