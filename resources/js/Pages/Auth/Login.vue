@@ -9,7 +9,7 @@
 
             <div class="mt-4">
                 <label for="password" class="label">Password</label>
-                <input id="password" v-model="form.email" type="password" class="input" />
+                <input id="password" v-model="form.password" type="password" class="input" />
             </div>
 
             <div class="mt-4">
