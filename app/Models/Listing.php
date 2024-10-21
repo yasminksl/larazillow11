@@ -22,6 +22,6 @@ class Listing extends Model
     ];
 
     public function owner(): BelongsTo {
-        return $this->belongsTo(User::class, 'by_user_id');
+        return $this->belongsTo(User::class, 'by_user_id'); 
     }
 }

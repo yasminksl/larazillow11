@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Listing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ListingController extends Controller
 {
@@ -21,8 +22,7 @@ class ListingController extends Controller
 
     public function store(Request $request)
     {
-
-        Listing::create(
+        $request->user()->listings()->create(
             $request->validate([
                 'beds' => 'required|integer|min:0|max:20',
                 'baths' => 'required|integer|min:0|max:20',
