@@ -15,11 +15,15 @@ class ListingController extends Controller
         $this->authorizeResource(Listing::class, 'listing');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         return inertia('Listing/Index', [
+            'filters' => $request->only([
+                'priceFrom', 'priceTo', 'beds', 'baths', 'areaFrom', 'areaTo'
+            ]),
             'listings' => Listing::orderByDesc('created_at')
-                ->paginate(10),
+                ->paginate(10)
+                ->withQueryString(),
         ]);
     }
 
