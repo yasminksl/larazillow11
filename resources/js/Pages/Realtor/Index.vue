@@ -15,9 +15,12 @@
                     <ListingAddress :listing="listing" class="text-gray-500" />
                 </div>
                 <div class="flex items-center gap-1 text-gray-600 dark:text-gray-300">
-                    <Link href="" class="btn-outline text-xs font-medium">Preview</Link>
-                    <Link href="" class="btn-outline text-xs font-medium">Edit</Link>
-                    <Link href="" class="btn-outline text-xs font-medium">Delete</Link>
+                    <Link class="btn-outline text-xs font-medium">Preview</Link>
+                    <Link class="btn-outline text-xs font-medium">Edit</Link>
+                    <Link class="btn-outline text-xs font-medium"
+                        :href="route('realtor.listing.destroy', { listing: listing.id })" as="button" method="delete">
+                    Delete
+                    </Link>
                 </div>
             </div>
         </Box>
@@ -25,11 +28,11 @@
 </template>
 
 <script setup>
-import Box from '@/Components/UI/Box.vue';
-import Price from '@/Components/Price.vue';
-import ListingSpace from '@/Components/ListingSpace.vue';
-import ListingAddress from '@/Components/ListingAddress.vue';
-import { Link } from '@inertiajs/vue3';
+import Box from '@/Components/UI/Box.vue'
+import Price from '@/Components/Price.vue'
+import ListingSpace from '@/Components/ListingSpace.vue'
+import ListingAddress from '@/Components/ListingAddress.vue'
+import { Link } from '@inertiajs/vue3'
 
 defineProps({
     listings: Array,
