@@ -10,6 +10,12 @@
                     :disabled="!canUpload">Upload</button>
                 <button type="reset" class="btn-outline" @click="reset">Reset</button>
             </section>
+
+            <div v-if="imageErrors.length" class="input-error">
+                <div v-for="(error, index) in imageErrors" :key="index">
+                    {{ error }}
+                </div>
+            </div>
         </form>
     </Box>
 
@@ -18,8 +24,9 @@
         <section class="mt-4 grid grid-cols-3 gap-4">
             <div v-for="image in listing.images" :key="image.id" class="flex flex-col justify-between">
                 <img :src="image.src" class="rounded-md" />
-                <Link :href="route('realtor.listing.image.destroy', {listing: props.listing.id, image: image.id})" method="delete" as="button" class="mt-2 btn-outline text-xs">
-                    Delete
+                <Link :href="route('realtor.listing.image.destroy', { listing: props.listing.id, image: image.id })"
+                    method="delete" as="button" class="mt-2 btn-outline text-xs">
+                Delete
                 </Link>
             </div>
         </section>
@@ -45,6 +52,8 @@ router.on('progress', (event) => {
 const form = useForm({
     images: [],
 })
+
+const imageErrors = computed(() => Object.values(form.errors))
 
 const canUpload = computed(() => form.images.length)
 
