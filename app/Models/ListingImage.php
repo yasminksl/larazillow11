@@ -15,7 +15,7 @@ class ListingImage extends Model
 
     public function listing(): BelongsTo
     {
-        return $this->belongsTo((Listing::class));
+        return $this->belongsTo(Listing::class);
     }
 
     public function getSrcAttribute()
