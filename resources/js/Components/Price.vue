@@ -1,9 +1,9 @@
 <template>
-    <span>{{ formattedPrice }}</span>
+  <span>{{ formattedPrice }}</span>
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed } from 'vue'
 
 const props = defineProps({
     price: [Number, String],
@@ -14,6 +14,6 @@ const formattedPrice = computed(
         style: 'currency',
         currency: 'USD',
         maximumFractionDigits: 0,
-    })
+    }),
 )
 </script>
