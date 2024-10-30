@@ -41,7 +41,7 @@ const filterForm = reactive({
 
 watch(
     filterForm, debounce(() => router.get(
-        route('realtor.listing.index'),
+        '/realtor/listing',
         filterForm,
         { preserveState: true, preserveScroll: true },
     ), 1000),

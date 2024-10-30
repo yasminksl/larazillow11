@@ -30,7 +30,7 @@
       <div v-for="image in listing.images" :key="image.id" class="flex flex-col justify-between">
         <img :src="image.src" class="rounded-md" />
         <Link
-          :href="route('realtor.listing.image.destroy', { listing: props.listing.id, image: image.id })"
+          :href="`/realtor/listing/${listing.id}/image/${image}`"
           method="delete" as="button" class="mt-2 btn-outline text-xs"
         >
           Delete
@@ -66,7 +66,7 @@ const canUpload = computed(() => form.images.length)
 
 const upload = () => {
     form.post(
-        route('realtor.listing.image.store', { listing: props.listing.id }), {
+        `/realtor/listing/${props.listing}/image`, {
         onSuccess: () => form.reset('images'),
     },
     )

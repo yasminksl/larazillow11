@@ -2,8 +2,14 @@
   <form @submit.prevent="filter">
     <div class="mb-8 mt-4 flex flex-wrap gap-2">
       <div class="flex flex-nowrap items-center">
-        <input v-model.number="filterForm.priceFrom" type="text" placeholder="Price from" class="input-filter-l w-28" />
-        <input v-model.number="filterForm.priceTo" type="text" placeholder="Price to" class="input-filter-r w-28" />
+        <input
+          v-model.number="filterForm.priceFrom" type="text" placeholder="Price from"
+          class="input-filter-l w-28"
+        />
+        <input
+          v-model.number="filterForm.priceTo" type="text" placeholder="Price to"
+          class="input-filter-r w-28"
+        />
       </div>
 
       <div class="flex flex-nowrap items-center">
@@ -24,8 +30,14 @@
       </div>
 
       <div class="flex flex-nowrap items-center">
-        <input v-model.number="filterForm.areaFrom" type="text" placeholder="Area from" class="input-filter-l w-28" />
-        <input v-model.number="filterForm.areaTo" type="text" placeholder="Area to" class="input-filter-r w-28" />
+        <input
+          v-model.number="filterForm.areaFrom" type="text" placeholder="Area from"
+          class="input-filter-l w-28"
+        />
+        <input
+          v-model.number="filterForm.areaTo" type="text" placeholder="Area to"
+          class="input-filter-r w-28"
+        />
       </div>
 
       <button type="submit" class="btn-normal">Filter</button>
@@ -42,17 +54,17 @@ const props = defineProps({
 })
 
 const filterForm = useForm({
-    priceFrom: props.priceFrom ?? null,
-    priceTo: props.priceTo ?? null,
-    beds: props.beds ?? null,
-    baths: props.baths ?? null,
-    areaFrom: props.areaFrom ?? null,
-    areaTo: props.areaTo ?? null,
+    priceFrom: props.filters.priceFrom ?? null,
+    priceTo: props.filters.priceTo ?? null,
+    beds: props.filters.beds ?? null,
+    baths: props.filters.baths ?? null,
+    areaFrom: props.filters.areaFrom ?? null,
+    areaTo: props.filters.areaTo ?? null,
 })
 
 const filter = () => {
     filterForm.get(
-        route('listing.index'),
+        '/listing',
         {
             preserveState: true,
             preserveScroll: true,

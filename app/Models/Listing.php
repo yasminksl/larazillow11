@@ -51,7 +51,7 @@ class Listing extends Model
             fn($query, $value) => $query->where('price', '>=', $value)
         )->when(
             $filters['priceTo'] ?? false,
-            fn($query, $value) => $query->where('price', '>=', $value)
+            fn($query, $value) => $query->where('price', '<=', $value)
         )->when(
             $filters['beds'] ?? false,
             fn($query, $value) => $query->where('beds', (int)$value < 6 ? '=' : '>=', $value)
