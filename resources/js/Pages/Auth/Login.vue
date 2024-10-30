@@ -17,7 +17,7 @@
         <button class="btn-primary w-full" type="submit">Login</button>
 
         <div class="mt-2 text-center">
-          <Link :href="route('user-account.create')" class="text-sm text-gray-500">
+          <Link href="/user-account/create" class="text-sm text-gray-500">
             Need an account? Click here
           </Link>
         </div>
@@ -34,6 +34,6 @@ const form = useForm({
     password: null,
 })
 
-const login = () => form.post('/login/store')
+const login = () => form.post('/login')
 
 </script>
