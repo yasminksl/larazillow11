@@ -1,27 +1,29 @@
 <template>
-    <Box>
-        <template #header>Make an Offer</template>
-        <div>
-            <form @submit.prevent="makeOffer">
-                <input v-model.number="form.amount" type="text" class="input" />
-                <input v-model.number="form.amount" type="range" :min="min" :max="max" step="1000"
-                    class="mt-2 w-full h-4 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer" />
+  <Box>
+    <template #header>Make an Offer</template>
+    <div>
+      <form @submit.prevent="makeOffer">
+        <input v-model.number="form.amount" type="text" class="input" />
+        <input
+          v-model.number="form.amount" type="range" :min="min" :max="max" step="1000"
+          class="mt-2 w-full h-4 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer"
+        />
 
-                <button type="submit" class="btn-outline w-full mt-2 text-sm">
-                    Make an Offer
-                </button>
-            </form>
-        </div>
+        <button type="submit" class="btn-outline w-full mt-2 text-sm">
+          Make an Offer
+        </button>
+      </form>
+    </div>
 
-        <div class="flex justify-between text-gray-500 mt-2">
-            <div>Difference</div>
-            <div>
-                <Price :price="difference" />
-            </div>
-        </div>
+    <div class="flex justify-between text-gray-500 mt-2">
+      <div>Difference</div>
+      <div>
+        <Price :price="difference" />
+      </div>
+    </div>
 
-        {{ form.amount.errors }}
-    </Box>
+    {{ form.amount.errors }}
+  </Box>
 </template>
 
 <script setup>
@@ -29,7 +31,7 @@ import Box from '@/Components/UI/Box.vue'
 import Price from '@/Components/Price.vue'
 import { useForm } from '@inertiajs/vue3'
 import { computed, watch } from 'vue'
-import { debounce } from 'lodash';
+import { debounce } from 'lodash'
 
 const props = defineProps({
     listingId: Number,
