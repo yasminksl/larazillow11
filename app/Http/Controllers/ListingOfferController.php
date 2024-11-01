@@ -10,6 +10,8 @@ class ListingOfferController extends Controller
 {
     public function store(Listing $listing, Request $request)
     {
+        $this->authorize('view', $listing);
+        
         $listing->offers()->save(
             Offer::make(
                 $request->validate([
@@ -21,6 +23,6 @@ class ListingOfferController extends Controller
         return redirect()->back()->with(
             'success',
             'Offer was made!'
-        );  
+        );
     }
 }

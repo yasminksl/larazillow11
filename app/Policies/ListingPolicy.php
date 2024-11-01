@@ -28,7 +28,14 @@ class ListingPolicy
      */
     public function view(?User $user, Listing $listing): bool
     {
-        return true;
+        // verificando se o usuário é proprietário do anúncio
+        if($listing->by_user_id === $user?->id)
+        {
+            return true;
+        }
+
+        // se não for, só poderá ver o anúncio se ele não tiver sido vendido
+        return $listing->sold_at === null;
     }
 
     /**
@@ -44,7 +51,7 @@ class ListingPolicy
      */
     public function update(User $user, Listing $listing): bool
     {
-        return $user->id === $listing->by_user_id; // só pode editar quem criou a listing
+        return $listing->sold_at === null && ($user->id === $listing->by_user_id); // só pode editar quem criou a listing
     }
 
     /**
