@@ -13,7 +13,7 @@
         <div class="text-gray-500 text-sm">Made on {{ madeOn }}</div>
       </div>
       <div>
-        <Link v-if="notSold" :href="`/realtor/offer/${offer.id}/accept`" class="btn-outline text-xs font-medium" as="button" method="put">Accept</Link>
+        <Link v-if="!isSold" :href="`/realtor/offer/${offer.id}/accept`" class="btn-outline text-xs font-medium" as="button" method="put">Accept</Link>
       </div>
     </section>
   </Box>
@@ -28,14 +28,11 @@ import { computed } from 'vue'
 const props = defineProps({
     offer: Object,
     listingPrice: Number,
+    isSold: Boolean,
 })
 
 const difference = computed(() => props.offer.amount - props.listingPrice)
 
 const madeOn = computed(() =>  new Date(props.offer.created_at).toDateString())
-
-const notSold = computed(
-    () => !props.offer.accepted_at && !props.offer.rejected_at,
-)
 
 </script>
