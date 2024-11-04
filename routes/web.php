@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ListingController;
@@ -11,7 +12,6 @@ use App\Http\Controllers\RealtorListingController;
 use App\Http\Controllers\RealtorListingImageController;
 use App\Http\Controllers\UserAccountController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'index']);
@@ -46,7 +46,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
         ->with('success', 'Email was verified');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
-Route::get('/email/verification-notification', function (Request $request) {
+Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
 
     return back()->with('success', 'Verification link sent!');
